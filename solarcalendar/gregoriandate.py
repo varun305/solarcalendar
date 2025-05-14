@@ -56,6 +56,9 @@ class GregorianDate:
         low = int(offset / 366) - 1
         high = int(offset / 365) + 1
 
+        if low > high:
+            low, high = high, low
+
         while low <= high:
             mid = (low + high) // 2
             mid_offset = GregorianDate(mid, 1, 1).to_solar_offset()

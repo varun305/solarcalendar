@@ -34,6 +34,9 @@ class MarsDate:
         low = int(offset / 669) - 1
         high = int(offset / 668) + 1
 
+        if low > high:
+            low, high = high, low
+
         while low <= high:
             mid = (low + high) // 2
             mid_offset = MarsDate(mid, 1).to_solar_offset()
