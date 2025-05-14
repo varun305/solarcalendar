@@ -1,5 +1,11 @@
 from solarcalendar import GregorianDate
 
+def test_solar_offset_start():
+    date1 = GregorianDate(1, 1, 1)
+    assert date1.to_solar_offset() == 0
+    date2 = GregorianDate.from_solar_offset(0)
+    assert (date2.year, date2.month, date2.day) == (1, 1, 1)
+
 def test_solar_offset_far_past():
     for offset in range(-100_000_000, -99_999_000):
         date1 = GregorianDate.from_solar_offset(offset - 1)
